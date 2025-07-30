@@ -11,7 +11,7 @@ const TodoItem: React.FC<TodoItemProps> = ({ todo, toggleTodo, deleteTodo }) => 
   return (
     <li
       key={todo.id}
-      className="flex items-center gap-2 bg-gray-50 p-3 rounded-lg border border-gray-200"
+      className="flex items-center gap-2 bg-gray-200 p-4 rounded-lg border-2 border-gray-400 mb-4 shadow"
     >
       <input
         type="checkbox"

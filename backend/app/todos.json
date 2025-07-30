@@ -1,7 +1,12 @@
 [
   {
-    "id": "df3b074c-ace1-4d99-aa6e-8ade04724195",
+    "id": "7a5051d8-87de-4328-b980-19dc05ca4697",
     "title": "Task 1",
+    "completed": false
+  },
+  {
+    "id": "af6a512e-7f24-4029-8005-5095c15196c2",
+    "title": "Task 2",
     "completed": false
   }
 ]
