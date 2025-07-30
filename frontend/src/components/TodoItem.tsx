@@ -3,7 +3,7 @@ import type { Todo } from "../types/todo";
 
 interface TodoItemProps {
   todo: Todo;
-  toggleTodo: (id: number) => void;
+  toggleTodo: (id: string) => void;
 }
 
 const TodoItem: React.FC<TodoItemProps> = ({ todo, toggleTodo }) => {

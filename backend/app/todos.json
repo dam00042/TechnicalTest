@@ -1,30 +1,12 @@
 [
   {
-    "title": "Learn React",
+    "id": "70c46a43-7e44-4b08-9eb3-aa6ea77f5012",
+    "title": "Test task",
     "completed": true
   },
   {
-    "title": "Learn TypeScript",
-    "completed": true
-  },
-  {
-    "title": "Learn Vite",
-    "completed": false
-  },
-  {
-    "title": "Learn FastAPI",
-    "completed": false
-  },
-  {
-    "title": "Learn Docker",
-    "completed": false
-  },
-  {
-    "title": "Learn PostgreSQL",
-    "completed": false
-  },
-  {
-    "title": "Learn Tailwind CSS",
+    "id": "8256cc15-bf1b-48a8-8ed4-149d0ec6758d",
+    "title": "Task 1",
     "completed": false
   }
 ]

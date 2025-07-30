@@ -1,9 +1,11 @@
 import json
 from pathlib import Path
-
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
+from typing import Optional
+import uuid
+from fastapi import Body
 
 DATA_FILE = Path(__file__).parent / "todos.json"
 
@@ -19,12 +21,22 @@ app.add_middleware(
 
 
 class Todo(BaseModel):
+    id: str
     title: str
     completed: bool = False
+
+class TodoCreate(BaseModel):
+    title: str
+    completed: bool = False
+
+class TodoUpdate(BaseModel):
+    completed: bool
 
 
 def load_todos() -> list[Todo]:
     """Load todos from the JSON file."""
+    if not DATA_FILE.exists():
+        return []
     with open(DATA_FILE, "r", encoding="utf-8") as f:
         return [Todo(**todo) for todo in json.load(f)]
 
@@ -47,14 +59,34 @@ def get_todos():
 
 
 @app.post("/todos", response_model=Todo)
-def add_todo(todo: Todo):
+def add_todo(todo: TodoCreate):
     """
     Add a new todo.
 
     Args:
-        todo (Todo): The todo to add.
+        todo (TodoCreate): The todo to add.
     """
     todos = load_todos()
-    todos.append(todo)
+    new_todo = Todo(id=str(uuid.uuid4()), title=todo.title, completed=todo.completed)
+    todos.append(new_todo)
     save_todos(todos)
-    return todo
+    return new_todo
+
+
+
+@app.patch("/todos/{todo_id}", response_model=Todo)
+def update_todo_status(todo_id: str, update: TodoUpdate):
+    """
+    Update the completed status of a todo.
+
+    Args:
+        todo_id (str): The ID of the todo to update.
+        update (TodoUpdate): The update to apply.
+    """
+    todos = load_todos()
+    for todo in todos:
+        if todo.id == todo_id:
+            todo.completed = update.completed
+            save_todos(todos)
+            return todo
+    raise HTTPException(status_code=404, detail="Todo not found")

@@ -19,7 +19,7 @@ export const createTodo = async (title: string): Promise<void> => {
 };
 
 export const toggleTodoStatus = async (
-  id: number,
+  id: string,
   currentStatus: boolean
 ): Promise<Todo> => {
   const res = await fetch(`${BASE_URL}/${id}`, {
