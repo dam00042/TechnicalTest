@@ -4,7 +4,6 @@ sys.path.append(str(Path(__file__).parent))
 
 from fastapi.testclient import TestClient
 from main import app, DATA_FILE
-import os
 
 client = TestClient(app)
 
@@ -38,3 +37,22 @@ def test_add_and_update_todo():
     assert response.status_code == 200
     todos = response.json()
     assert any(t["id"] == todo_id and t["completed"] for t in todos)
+
+def test_delete_todo():
+    """
+    Test deleting a todo.
+    """
+    # Create a todo
+    response = client.post("/todos", json={"title": "Delete me", "completed": False})
+    assert response.status_code == 200
+    todo = response.json()
+    todo_id = todo["id"]
+
+    # Delete the todo
+    response = client.delete(f"/todos/{todo_id}")
+    assert response.status_code == 204
+
+    # Ensure it no longer exists
+    response = client.get("/todos")
+    todos = response.json()
+    assert all(t["id"] != todo_id for t in todos)

@@ -3,9 +3,7 @@ from pathlib import Path
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
-from typing import Optional
 import uuid
-from fastapi import Body
 
 DATA_FILE = Path(__file__).parent / "todos.json"
 
@@ -90,3 +88,18 @@ def update_todo_status(todo_id: str, update: TodoUpdate):
             save_todos(todos)
             return todo
     raise HTTPException(status_code=404, detail="Todo not found")
+
+
+@app.delete("/todos/{todo_id}", status_code=204)
+def delete_todo(todo_id: str):
+    """
+    Delete a todo by its ID.
+
+    Args:
+        todo_id (str): The ID of the todo to delete.
+    """
+    todos = load_todos()
+    new_todos = [todo for todo in todos if todo.id != todo_id]
+    if len(new_todos) == len(todos):
+        raise HTTPException(status_code=404, detail="Todo not found")
+    save_todos(new_todos)
