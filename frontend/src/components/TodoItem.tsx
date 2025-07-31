@@ -40,39 +40,42 @@ const TodoItem: React.FC<TodoItemProps> = ({ todo, toggleTodo, deleteTodo, toggl
       >
         {todo.favorite ? "★" : "☆"}
       </button>
-      <div className="flex-1 min-w-0 flex flex-col justify-center">
+      <div className="flex-1 min-w-0 flex flex-col justify-center pr-2">
         <span className={todo.completed ? "line-through text-gray-400" : ""}>{todo.title}</span>
         {todo.description && (
-          !showDesc ? (
-            <span
-              ref={descRef}
-              className={`block mt-1 text-sm max-w-xs truncate overflow-hidden whitespace-nowrap align-middle ${todo.completed ? 'text-gray-400' : 'text-gray-500'}`}
-              title={todo.description}
-            >
-              {todo.description}
-            </span>
-          ) : (
-            <span
-              className={`block mt-1 text-sm whitespace-pre-line break-words max-w-xs ${todo.completed ? 'text-gray-400' : 'text-gray-600'}`}
-              style={{wordBreak: 'break-word'}}
-            >
-              {todo.description}
-            </span>
-          )
+          <>
+            {!showDesc ? (
+              <span
+                ref={descRef}
+                className={`block mt-1 text-sm truncate overflow-hidden whitespace-nowrap align-middle ${todo.completed ? 'text-gray-400' : 'text-gray-500'}`}
+                style={{ maxWidth: '100%' }}
+                title={todo.description}
+              >
+                {todo.description}
+              </span>
+            ) : (
+              <span
+                className={`block mt-1 text-sm whitespace-pre-line break-words ${todo.completed ? 'text-gray-400' : 'text-gray-600'}`}
+                style={{ wordBreak: 'break-word', maxWidth: '100%' }}
+              >
+                {todo.description}
+              </span>
+            )}
+            {descOverflow && (
+              <button
+                onClick={() => setShowDesc((v) => !v)}
+                className="bg-gray-300 hover:bg-gray-400 text-gray-800 px-2 py-1 rounded transition cursor-pointer border border-gray-300 whitespace-nowrap h-8 mt-2 w-fit"
+                type="button"
+                title={showDesc ? "Hide description" : "Show full description"}
+                style={{ minWidth: '140px', maxWidth: '180px' }}
+              >
+                {showDesc ? "Hide Description" : "Show Description"}
+              </button>
+            )}
+          </>
         )}
       </div>
-      <div className="flex items-center gap-2 ml-2 flex-1 justify-end">
-        {todo.description && descOverflow && (
-            <button
-            onClick={() => setShowDesc((v) => !v)}
-            className="bg-gray-300 hover:bg-gray-400 text-gray-800 px-2 py-1 rounded transition cursor-pointer border border-gray-300 whitespace-nowrap h-8"
-            type="button"
-            title={showDesc ? "Hide description" : "Show full description"}
-            style={{ minWidth: '140px', maxWidth: '180px' }}
-            >
-            {showDesc ? "Hide Description" : "Show Description"}
-            </button>
-        )}
+      <div className="flex items-center gap-2 ml-2 flex-shrink-0 justify-end">
         <button
           onClick={() => onView && onView(todo)}
           className="bg-orange-400 hover:bg-orange-500 text-white px-2 py-1 rounded transition cursor-pointer border border-orange-500"

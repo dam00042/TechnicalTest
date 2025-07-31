@@ -1,16 +1,51 @@
 [
   {
-    "id": "9ca5a702-91db-4590-8f4e-115229898032",
-    "title": "Test task",
-    "description": "Updated desc",
+    "id": "ba4b71e2-71d2-429f-a2ee-a71f8f6112b6",
+    "title": "Learn React",
+    "description": "Learn how to build dynamic user interfaces using React.",
+    "completed": true,
+    "favorite": true
+  },
+  {
+    "id": "c2ec7ded-4f58-48d3-88f1-327581707f5a",
+    "title": "Learn TypeScript",
+    "description": "Understand TypeScript basics to add static typing to JavaScript code.",
+    "completed": true,
+    "favorite": false
+  },
+  {
+    "id": "f69414ef-03da-4d06-b880-44444937c2ef",
+    "title": "Learn Vite",
+    "description": "Explore Vite as a fast build tool for frontend development.",
+    "completed": false,
+    "favorite": true
+  },
+  {
+    "id": "d4302884-9faf-44f1-9828-639d316cf3ff",
+    "title": "Learn FastAPI",
+    "description": "Learn how to create fast and efficient APIs with FastAPI in Python.",
     "completed": false,
     "favorite": false
   },
   {
-    "id": "f8c5232d-7ff2-45c4-ab82-8c79cfa98103",
-    "title": "Task 1",
-    "description": "asdasdasd\nasd\nas\nd\nasd\na\nsd",
-    "completed": true,
-    "favorite": true
+    "id": "a8d90767-7d7d-48d5-9a7b-e6b2007bea2e",
+    "title": "Learn Docker",
+    "description": "Master containerization and application deployment using Docker.",
+    "completed": false,
+    "favorite": false
+  },
+  {
+    "id": "a7e629f8-e4b2-44d6-9656-88c4ac6cc3ec",
+    "title": "Learn PostgreSQL",
+    "description": "Get familiar with PostgreSQL, a powerful relational database system.",
+    "completed": false,
+    "favorite": false
+  },
+  {
+    "id": "0e0ccc83-2bf0-473d-9cd0-512d13039728",
+    "title": "Learn Tailwind CSS",
+    "description": "Learn to design modern UIs using utility-first Tailwind CSS framework.",
+    "completed": false,
+    "favorite": false
   }
 ]
