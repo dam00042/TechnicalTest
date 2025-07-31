@@ -1,12 +1,16 @@
 [
   {
-    "id": "7a5051d8-87de-4328-b980-19dc05ca4697",
-    "title": "Task 1",
-    "completed": false
+    "id": "9ca5a702-91db-4590-8f4e-115229898032",
+    "title": "Test task",
+    "description": "Updated desc",
+    "completed": false,
+    "favorite": false
   },
   {
-    "id": "af6a512e-7f24-4029-8005-5095c15196c2",
-    "title": "Task 2",
-    "completed": false
+    "id": "f8c5232d-7ff2-45c4-ab82-8c79cfa98103",
+    "title": "Task 1",
+    "description": "asdasdasd\nasd\nas\nd\nasd\na\nsd",
+    "completed": true,
+    "favorite": true
   }
 ]
